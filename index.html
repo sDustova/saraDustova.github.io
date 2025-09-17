@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara Dustova | Technology Advocate & Nonprofit Leader</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600;700&display=swap');
+        
+        .particle-trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #E7DFE8;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+        }
+        
+        .morphing-blob {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+            will-change: transform, border-radius, background-color;
+        }
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #92898A 0%, #AF9FA5 50%, #E4DEE4 100%);
+        }
+        .section-divider {
+            height: 100px;
+            background: linear-gradient(to bottom, #92898A, transparent);
+        }
+        .floating-card {
+            box-shadow: 0 20px 50px rgba(147, 136, 138, 0.1);
+            transition: all 0.3s ease;
+            background-color: #EDE3E4;
+        }
+        .floating-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 30px 70px rgba(147, 136, 138, 0.3);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: #4299E1;
+            transform: translateX(-50%);
+        }
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Hero Section with Particles.js -->
+    <div id="hero" class="relative overflow-hidden hero-gradient text-white min-h-screen flex items-center">
+        <div class="absolute inset-0 z-0" id="particles-js"></div>
+        <div class="absolute inset-0 z-0 bg-gradient-to-b from-[#92898A]/30 to-[#E4DEE4]/30"></div>
+        <div class="container mx-auto px-6 relative z-10 py-20">
+            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">Sara Dustova</h1>
+                <p class="text-xl md:text-2xl mb-8 font-light">Technology Advocate & Nonprofit Leader</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#about" class="px-6 py-3 bg-white text-indigo-700 rounded-lg font-medium hover:bg-opacity-90 transition duration-300">About Me</a>
+                    <a href="#contact" class="px-6 py-3 border-2 border-white text-white rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition duration-300">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+            <a href="#about" class="animate-bounce">
+                <i data-feather="chevron-down" class="w-10 h-10 text-white"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16">Professional Summary</h2>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="md:col-span-2">
+                        <p class="text-xl leading-relaxed mb-6" data-aos="fade-right">
+                            Passionate nonprofit leader and technology advocate with extensive experience in digital literacy, educational outreach, and women's empowerment. Founder and CEO of Noor Nonprofit Corporation, dedicated to equipping young women in rural Tajikistan with technological skills and business knowledge.
+                        </p>
+                        <p class="text-xl leading-relaxed" data-aos="fade-right" data-aos-delay="100">
+                            Proficient in Python, JavaScript, and web development, with a strong focus on creating educational programs and resources. Eager to leverage technical and leadership skills to promote digital literacy and economic opportunities for women through strategic partnerships and program implementation.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-center" data-aos="fade-left">
+                        <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-indigo-100 shadow-xl">
+                            <img src="http://static.photos/people/640x360/1" alt="Sara Dustova" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 bg-[#EDE3E4]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Skills & Expertise</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div data-aos="fade-up">
+                    <div class="bg-white rounded-xl p-8 floating-card">
+                        <h3 class="text-2xl font-bold mb-6 text-indigo-700 flex items-center">
+                            <i data-feather="code" class="mr-3"></i> Technical Skills
+                        </h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 rounded-full bg-[#E4DEE4] text-[#92898A]">Python</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">JavaScript</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">SQL</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">HTML/CSS</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">JIRA</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">Confluence</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">ServiceNow</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">Hugging Face</span>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white rounded-xl p-8 floating-card">
+                        <h3 class="text-2xl font-bold mb-6 text-indigo-700 flex items-center">
+                            <i data-feather="users" class="mr-3"></i> Soft Skills
+                        </h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 rounded-full bg-[#E4DEE4] text-[#92898A]">Critical Thinking</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">Problem Solving</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">Customer Service</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">Team Collaboration</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">Leadership</span>
+                            <span class="px-4 py-2 rounded-full bg-[#E7DFE8] text-[#92898A]">Public Speaking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Professional Experience</h2>
+            <div class="relative timeline">
+                <!-- Experience Item 1 -->
+                <div class="mb-12 relative" data-aos="fade-right">
+                    <div class="md:flex">
+                        <div class="md:w-1/2 md:pr-10 md:text-right">
+                            <h3 class="text-2xl font-bold text-indigo-700">IT Intern</h3>
+                            <p class="text-gray-600">Eli Lilly Company | June-July 2024</p>
+                        </div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                    <div class="md:flex">
+                        <div class="hidden md:block md:w-1/2"></div>
+                        <div class="md:w-1/2 md:pl-10">
+                            <div class="bg-gray-50 p-6 rounded-lg floating-card">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Developed a data analysis project using Power BI, enhancing data pattern recognition accuracy by 20% for customer insights</li>
+                                    <li>Optimized data recognition processes with AWS SQL, reducing data processing time by 30%</li>
+                                    <li>Implemented data analysis for the Lilly Together app, contributing to improved decision-making in patient support initiatives</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="mb-12 relative" data-aos="fade-left">
+                    <div class="md:flex">
+                        <div class="hidden md:block md:w-1/2"></div>
+                        <div class="md:w-1/2 md:pl-10">
+                            <h3 class="text-2xl font-bold text-indigo-700">Junior Developer Intern</h3>
+                            <p class="text-gray-600">Teselagen, BioEngineering Company | Jun-Aug 2023</p>
+                        </div>
+                    </div>
+                    <div class="md:flex">
+                        <div class="md:w-1/2 md:pr-10">
+                            <div class="bg-gray-50 p-6 rounded-lg floating-card">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Collaborated on software development projects, enhancing bioengineering research tools, resulting in a 15% increase in application reliability</li>
+                                    <li>Conducted debugging and testing, reducing software errors by 25%, thus improving the user experience</li>
+                                    <li>Participated in automated testing, ensuring a 95% compliance rate with software quality standards</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="mb-12 relative" data-aos="fade-right">
+                    <div class="md:flex">
+                        <div class="md:w-1/2 md:pr-10 md:text-right">
+                            <h3 class="text-2xl font-bold text-indigo-700">Assistant Manager</h3>
+                            <p class="text-gray-600">Be.You.tiful Nails Salon | Feb 2021 – Aug 2023</p>
+                        </div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                    <div class="md:flex">
+                        <div class="hidden md:block md:w-1/2"></div>
+                        <div class="md:w-1/2 md:pl-10">
+                            <div class="bg-gray-50 p-6 rounded-lg floating-card">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Led a team of 8 employees, boosting customer satisfaction scores by 40% through training on exceptional service practices</li>
+                                    <li>Streamlined daily operations, resulting in a 20% increase in appointment bookings and a 15% rise in monthly revenue</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Project 1 -->
+                <div data-aos="fade-up">
+                    <div class="bg-white rounded-xl p-8 h-full floating-card">
+                        <div class="h-48 overflow-hidden rounded-lg mb-6">
+                            <img src="http://static.photos/technology/640x360/1" alt="AI English-to-Cyrillic Farsi Translator" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">AI English-to-Cyrillic Farsi Translator</h3>
+                        <p class="text-gray-600 mb-4">Developed an AI-powered translator using Hugging Face's multilingual model to convert English to Farsi in native and Cyrillic scripts.</p>
+                        <a href="https://opposite-crib-882.notion.site/English-to-Cyrillic-Farsi-AI-Bridging-Language-Barriers-17b27f390ee78036b8e8ddf968f1cb78" class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+                            View Project <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white rounded-xl p-8 h-full floating-card">
+                        <div class="h-48 overflow-hidden rounded-lg mb-6">
+                            <img src="http://static.photos/finance/640x360/1" alt="Stock Trading Algorithm" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Stock Trading Algorithm</h3>
+                        <p class="text-gray-600 mb-4">Developed an algorithm utilizing historical data analysis and pattern recognition, achieving a 10% increase in trading accuracy.</p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Pandas</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div data-aos="fade-up">
+                    <div class="bg-white rounded-xl p-8 h-full floating-card">
+                        <div class="h-48 overflow-hidden rounded-lg mb-6">
+                            <img src="http://static.photos/education/640x360/1" alt="Field Research Project" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Field Research Project</h3>
+                        <p class="text-gray-600 mb-4">Digital Access & Female Empowerment in Tajikistan. Conducted field research studying digital access and the impact of educational technology on young women.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white rounded-xl p-8 h-full floating-card">
+                        <div class="h-48 overflow-hidden rounded-lg mb-6">
+                            <img src="http://static.photos/workspace/640x360/1" alt="Personal Website" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Personal Website</h3>
+                        <p class="text-gray-600 mb-4">Created a portfolio website showcasing skills in HTML, CSS, and JavaScript.</p>
+                        <a href="https://sdustova.github.io/ImSaraDustova.github.io/" class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+                            Visit Site <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Leadership & Volunteering</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Leadership 1 -->
+                <div data-aos="fade-up">
+                    <div class="bg-gray-50 rounded-xl p-6 h-full floating-card">
+                        <div class="w-12 h-12 rounded-full bg-[#E7DFE8] flex items-center justify-center mb-4 text-[#92898A]">
+                            <i data-feather="award"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Founder/CEO</h3>
+                        <p class="text-gray-600 mb-3">Noor Nonprofit Corporation (Jun 2024 - Present)</p>
+                        <p class="text-gray-700">Created a nonprofit that brings funds and computers to the villages of Tajikistan so girls can have more opportunities in technology.</p>
+                        <a href="https://noor-bridging-the-digital-divide-in-tajikistan.b12sites.com/index" class="text-[#AF9FA5] hover:text-[#92898A] text-sm font-medium inline-flex items-center mt-3">
+                            Visit Website <i data-feather="arrow-right" class="ml-1 w-3 h-3"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Leadership 2 -->
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gray-50 rounded-xl p-6 h-full floating-card">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4 text-indigo-600">
+                            <i data-feather="users"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Founder & President</h3>
+                        <p class="text-gray-600 mb-3">Computer Science Club (Dec 2023 – Present)</p>
+                        <p class="text-gray-700">Established and lead the Computer Science Club, fostering a community of technology enthusiasts.</p>
+                    </div>
+                </div>
+
+                <!-- Leadership 3 -->
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-gray-50 rounded-xl p-6 h-full floating-card">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4 text-indigo-600">
+                            <i data-feather="users"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Founder & President</h3>
+                        <p class="text-gray-600 mb-3">Girls Who Code Club (Sep 2024 – Present)</p>
+                        <p class="text-gray-700">Established and lead the Girls Who Code Club chapter, creating a group of technology focused girls.</p>
+                    </div>
+                </div>
+
+                <!-- Leadership 4 -->
+                <div data-aos="fade-up">
+                    <div class="bg-gray-50 rounded-xl p-6 h-full floating-card">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4 text-indigo-600">
+                            <i data-feather="book"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">President</h3>
+                        <p class="text-gray-600 mb-3">Computer Science Honor Society (Aug 2023 – Present)</p>
+                        <p class="text-gray-700">Teach Westfield Highschool Students coding and lead Educational Outreach Technology Program.</p>
+                    </div>
+                </div>
+
+                <!-- Leadership 5 -->
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gray-50 rounded-xl p-6 h-full floating-card">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4 text-indigo-600">
+                            <i data-feather="cpu"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Indiana Ambassador</h3>
+                        <p class="text-gray-600 mb-3">Mark Cuban AI Bootcamp (Oct 2023 – Present)</p>
+                        <p class="text-gray-700">Actively promoted and involved peers in the AI Bootcamp, enhancing school-wide participation.</p>
+                    </div>
+                </div>
+
+                <!-- Leadership 6 -->
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-gray-50 rounded-xl p-6 h-full floating-card">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mb-4 text-indigo-600">
+                            <i data-feather="star"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Ambassador</h3>
+                        <p class="text-gray-600 mb-3">Aspiration in Computing (AiC) (Jun 2024 – Present)</p>
+                        <p class="text-gray-700">Advocate for gender diversity in technology by empowering young women students to pursue computing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Press Coverage Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Press Coverage</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div data-aos="fade-up">
+                    <div class="bg-gray-50 rounded-xl p-8 h-full floating-card">
+                        <h3 class="text-2xl font-bold mb-3">Westfield Student's Nonprofit Brings Tech to Tajikistan</h3>
+                        <p class="text-gray-600 mb-4">You Are Current - September 2025</p>
+                        <a href="https://www.youarecurrent.com/2025/09/14/westfield-students-nonprofit-brings-tech-to-tajikistan-2/" class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+                            Read Article <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gray-50 rounded-xl p-8 h-full floating-card">
+                        <h3 class="text-2xl font-bold mb-3">Student Spotlight: Sara Dustova</h3>
+                        <p class="text-gray-600 mb-4">Townepost - 2025</p>
+                        <a href="https://townepost.com/indiana/westfield/student-spotlight-sara-dustova/" class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+                            Read Article <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div data-aos="fade-up">
+                    <div class="bg-gray-50 rounded-xl p-8 h-full floating-card">
+                        <h3 class="text-2xl font-bold mb-3">Excellence Without Borders</h3>
+                        <p class="text-gray-600 mb-4">The Reporter - 2025</p>
+                        <a href="https://readthereporter.com/excellence-without-borders-how-one-shamrock-is-starting-a-national-movement/" class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+                            Read Article <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Publications</h2>
+            <div class="max-w-3xl mx-auto" data-aos="fade-up">
+                <div class="bg-white rounded-xl p-8 floating-card">
+                    <h3 class="text-2xl font-bold mb-3">AI-Based English-to-Cyrillic Farsi Translator: Bridging Language Barriers with Machine Learning</h3>
+                    <p class="text-gray-600 mb-4">SSRN, 2024</p>
+                    <p class="text-gray-700 mb-4">Developed an AI-powered transliteration system for converting English to Cyrillic Farsi, addressing linguistic gaps for Tajik speakers. Utilized NLP and machine learning techniques to enhance script accuracy, achieving a 91% validation score.</p>
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5171975" class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center">
+                        Read Publication <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[#AF9FA5] text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Get In Touch</h2>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i data-feather="map-pin" class="mr-4 mt-1"></i>
+                            <div>
+                                <p class="font-medium">Location</p>
+                                <p>Indianapolis, IN</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="phone" class="mr-4 mt-1"></i>
+                            <div>
+                                <p class="font-medium">Phone</p>
+                                <p>317.724.3745</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="mail" class="mr-4 mt-1"></i>
+                            <div>
+                                <p class="font-medium">Email</p>
+                                <p>saradustova@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="linkedin" class="mr-4 mt-1"></i>
+                            <div>
+                                <p class="font-medium">LinkedIn</p>
+                                <a href="https://linkedin.com/in/saradustova" class="hover:underline">Sara Dustova LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg bg-[#92898A] border border-[#AF9FA5] text-white placeholder-[#E7DFE8] focus:outline-none focus:ring-2 focus:ring-white">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-[#92898A] border border-[#AF9FA5] text-white placeholder-[#E7DFE8] focus:outline-none focus:ring-2 focus:ring-white">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-[#92898A] border border-[#AF9FA5] text-white placeholder-[#E7DFE8] focus:outline-none focus:ring-2 focus:ring-white"></textarea>
+                        </div>
+                        <button type="submit" class="px-6 py-3 bg-white text-[#92898A] rounded-lg font-medium hover:bg-opacity-90 transition duration-300">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-xl font-bold">Sara Dustova</p>
+                    <p class="text-gray-400">Technology Advocate & Nonprofit Leader</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/sara-dustova-556387260" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="mail"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Sara Dustova. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script>
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Particles.js config
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#E7DFE8" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#E7DFE8", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" }
+                }
+            }
+        });
+
+        // GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Floating text animation
+        gsap.to("#hero h1", {
+            y: 20,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+
+        // Rotating elements
+        document.querySelectorAll('.floating-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                rotation: i % 2 === 0 ? -5 : 5,
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                ease: "back.out(1.7)"
+            });
+        });
+
+        // Background color scroll effect
+        gsap.to("body", {
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true
+            },
+            backgroundColor: "#EDE3E4",
+            ease: "none"
+        });
+
+        // Floating particles trail effect
+        document.addEventListener('mousemove', function(e) {
+            const particles = document.createElement('div');
+            particles.className = 'particle-trail';
+            particles.style.left = e.clientX + 'px';
+            particles.style.top = e.clientY + 'px';
+            document.body.appendChild(particles);
+            
+            gsap.to(particles, {
+                x: gsap.utils.random(-50, 50),
+                y: gsap.utils.random(-50, 50),
+                opacity: 0,
+                scale: gsap.utils.random(0.5, 2),
+                duration: 1,
+                onComplete: () => particles.remove()
+            });
+        });
+
+        // Morphing blob animation
+        const blob = document.createElement('div');
+        blob.className = 'morphing-blob';
+        document.body.appendChild(blob);
+        
+        gsap.to(blob, {
+            duration: 20,
+            x: () => gsap.utils.random(0, window.innerWidth),
+            y: () => gsap.utils.random(0, window.innerHeight),
+            scale: () => gsap.utils.random(0.8, 1.2),
+            borderRadius: () => {
+                const r1 = gsap.utils.random(30, 70);
+                const r2 = gsap.utils.random(30, 70);
+                return `${r1}% ${100-r1}% ${r2}% ${100-r2}% / ${100-r2}% ${r1}% ${100-r1}% ${r2}%`;
+            },
+            backgroundColor: () => {
+                const colors = ['#E7DFE8', '#E4DEE4', '#AF9FA5', '#92898A'];
+                return colors[Math.floor(Math.random() * colors.length)];
+            },
+            repeat: -1,
+            repeatRefresh: true,
+            ease: "sine.inOut"
+        });
+
+        feather.replace();
+    </script>
+</body>
+</html>
